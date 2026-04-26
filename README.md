@@ -24,10 +24,19 @@ This project is a real-time Network Intrusion Detection System (IDS) that detect
    python ids.py
 
 ## 📊 Detection Logic
-- Uses packet flags (SYN, ACK, FIN)
-- Tracks unique ports
-- Applies thresholds and scoring
-- Blocks suspicious IPs
+The detector uses a **dual time-window architecture**:
+- **Fast window (5s):** catches aggressive, high-rate scans
+- **Slow window (60s):** catches evasive scans that spread packets 
+  over time to avoid threshold-based detection
+
+For each source IP, it tracks:
+- SYN/ACK ratio (high SYN with no ACK = scan behavior)
+- Outgoing RST rate (closed port responses)
+- Unique destination ports contacted
+- Packet rate over both windows
+
+Alerts are scored and cross-validated across both windows before 
+being confirmed — reducing false positives.
 
 ## 📁 Logs
 - suspicious.log
