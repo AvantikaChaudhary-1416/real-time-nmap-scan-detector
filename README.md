@@ -1,9 +1,9 @@
 # Real-Time Nmap Scan Detector
 
-## 📌 Overview
+## Overview
 This project is a real-time Network Intrusion Detection System (IDS) that detects Nmap scans and network attacks using packet analysis.
 
-## 🚀 Features
+## Features
 - Detects SYN scans and SYN floods
 - Detects TCP port scans
 - Detects FIN, NULL, XMAS scans
@@ -11,19 +11,19 @@ This project is a real-time Network Intrusion Detection System (IDS) that detect
 - Uses scoring-based detection system
 - Uses short-term and long-term time windows
 
-## ⚙️ Technologies Used
+## Technologies Used
 - Python
 - Scapy
 - Networking concepts (TCP/IP)
 
-## ▶️ How to Run
+## How to Run
 1. Install dependencies:
    pip install scapy
 
 2. Run the script:
    python ids.py
 
-## 📊 Detection Logic
+## Detection Logic
 The detector uses a **dual time-window architecture**:
 - **Fast window (5s):** catches aggressive, high-rate scans
 - **Slow window (60s):** catches evasive scans that spread packets 
@@ -38,6 +38,6 @@ For each source IP, it tracks:
 Alerts are scored and cross-validated across both windows before 
 being confirmed — reducing false positives.
 
-## 📁 Logs
+## Logs
 - suspicious.log
 - confirmed.log
